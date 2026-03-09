@@ -1,0 +1,4 @@
+# Outline server credentials (never commit these)
+*.json
+*.env
+access.txt
