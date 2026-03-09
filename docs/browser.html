@@ -26,6 +26,8 @@
     .browser-tab.active { background: #2255cc; color: white; border-color: #2255cc; }
     .browser-section { display: none; }
     .browser-section.active { display: block; }
+    .os-section { display: none; }
+    .os-section.active { display: block; }
     .step-num { display: inline-flex; align-items: center; justify-content: center; background: #2255cc; color: white; border-radius: 50%; width: 1.6rem; height: 1.6rem; font-size: 0.8rem; font-weight: 700; margin-right: 0.5rem; flex-shrink: 0; }
     .step { display: flex; align-items: flex-start; margin-bottom: 0.9rem; }
     .step-body { flex: 1; padding-top: 0.1rem; }
@@ -47,20 +49,105 @@
         Zapret и Booster продолжат работать как обычно — конфликтов нет.<br>
         Игры идут напрямую (пинг не меняется), Discord через Zapret как раньше, браузер — через VPN.
       </div>
-      <p>Для этого нужно установить два приложения: <strong>Outline</strong> (работает в фоне) и <strong>расширение для браузера</strong> (переключает трафик).</p>
+      <p>Для этого нужно запустить <strong>локальный прокси</strong> (работает в фоне, не требует установки) и настроить <strong>расширение для браузера</strong> (переключает трафик).</p>
     </div>
 
     <div class="card">
-      <h2>Шаг 1. Установи Outline</h2>
-      <a class="btn" href="https://s3.amazonaws.com/outline-releases/client/windows/stable/Outline-Client.exe">Скачать для Windows</a>
-      <a class="btn" href="https://itunes.apple.com/app/outline-app/id1356178125">Скачать для macOS</a>
-      <ol style="margin-top: 1.1rem;">
-        <li>Установи и открой Outline</li>
-        <li>Нажми <strong>«Добавить сервер»</strong> и вставь ключ <strong>ss://...</strong>, который прислал тебе я</li>
-        <li>Нажми <strong>«Подключиться»</strong></li>
-        <li>Outline можно свернуть — пусть работает в фоне</li>
-      </ol>
-      <div class="note">Outline должен быть запущен и подключён, пока ты хочешь использовать VPN в браузере.</div>
+      <h2>Шаг 1. Запусти прокси</h2>
+      <p>Выбери свою систему:</p>
+
+      <div class="browser-tabs" style="margin-top: 0.8rem;">
+        <button class="browser-tab active" onclick="switchOS('os-win')">Windows</button>
+        <button class="browser-tab" onclick="switchOS('os-mac')">macOS</button>
+      </div>
+
+      <div id="os-win" class="os-section active">
+        <div class="step">
+          <span class="step-num">1</span>
+          <div class="step-body">
+            <strong>Создай папку</strong>
+            <p>Создай папку, например <strong>vpn-proxy</strong> на рабочем столе</p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-num">2</span>
+          <div class="step-body">
+            <strong>Скачай sslocal</strong>
+            <p><a href="https://github.com/shadowsocks/shadowsocks-rust/releases/latest" target="_blank">Открыть страницу загрузки →</a><br>
+            Найди файл <strong>shadowsocks-...-x86_64-pc-windows-msvc.zip</strong>, скачай и извлеки из архива <strong>sslocal.exe</strong> в свою папку</p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-num">3</span>
+          <div class="step-body">
+            <strong>Скачай скрипт запуска</strong>
+            <p><a href="start-proxy.bat" download>Скачать start-proxy.bat →</a><br>
+            Положи в ту же папку</p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-num">4</span>
+          <div class="step-body">
+            <strong>Добавь ключ</strong>
+            <p>Создай в папке текстовый файл <strong>key.txt</strong> и вставь в него ключ <strong>ss://...</strong>, который прислал тебе я.<br>
+            <span style="color:#888; font-size:0.85rem;">В файле должна быть только одна строка — сам ключ, больше ничего.</span></p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-num">5</span>
+          <div class="step-body">
+            <strong>Запусти</strong>
+            <p>Дважды кликни <strong>start-proxy.bat</strong> — появится чёрное окно с текстом «Прокси работает».<br>
+            Не закрывай это окно пока хочешь использовать VPN в браузере.</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="os-mac" class="os-section">
+        <div class="step">
+          <span class="step-num">1</span>
+          <div class="step-body">
+            <strong>Установи sslocal через Homebrew</strong>
+            <p>Открой <strong>Терминал</strong> (Finder → Программы → Утилиты → Терминал) и выполни:<br>
+            <code style="background:#f0f0f0; padding:0.2rem 0.5rem; border-radius:4px; font-size:0.85rem;">brew install shadowsocks-rust</code><br>
+            <span style="color:#888; font-size:0.85rem;">Если Homebrew не установлен: <a href="https://brew.sh" target="_blank">brew.sh</a></span></p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-num">2</span>
+          <div class="step-body">
+            <strong>Создай папку</strong>
+            <p>Создай папку, например <strong>vpn-proxy</strong> на рабочем столе</p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-num">3</span>
+          <div class="step-body">
+            <strong>Скачай скрипт запуска</strong>
+            <p><a href="start-proxy.sh" download>Скачать start-proxy.sh →</a><br>
+            Положи в папку vpn-proxy</p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-num">4</span>
+          <div class="step-body">
+            <strong>Добавь ключ</strong>
+            <p>Создай в папке текстовый файл <strong>key.txt</strong> и вставь в него ключ <strong>ss://...</strong>, который прислал тебе я.<br>
+            <span style="color:#888; font-size:0.85rem;">В файле должна быть только одна строка — сам ключ, больше ничего.</span></p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-num">5</span>
+          <div class="step-body">
+            <strong>Запусти</strong>
+            <p>В Терминале перейди в папку и запусти скрипт:<br>
+            <code style="background:#f0f0f0; padding:0.2rem 0.5rem; border-radius:4px; font-size:0.85rem;">cd ~/Desktop/vpn-proxy && bash start-proxy.sh</code><br>
+            Появится текст «Прокси работает». Не закрывай Терминал.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="note">Права администратора не нужны. Никакие системные настройки не меняются — это просто локальный прокси для браузера.</div>
     </div>
 
     <div class="card">
@@ -92,8 +179,8 @@
         <div class="step">
           <span class="step-num">3</span>
           <div class="step-body">
-            <strong>Создай новый профиль</strong>
-            <p>Слева нажми <strong>New profile...</strong> → придумай название (например «VPN») → тип оставь <strong>Proxy Profile</strong> → нажми <strong>Create</strong></p>
+            <strong>Открой профиль proxy</strong>
+            <p>Слева в списке уже есть профиль <strong>proxy</strong> — нажми на него</p>
           </div>
         </div>
         <div class="step">
@@ -102,22 +189,23 @@
             <strong>Введи настройки</strong>
             <p>В поле Protocol выбери <strong>SOCKS5</strong><br>
             Server: <strong>127.0.0.1</strong><br>
-            Port: <strong>1080</strong></p>
+            Port: <strong>1080</strong><br>
+            <span style="color:#888; font-size:0.85rem;">Bypass List трогать не нужно — оставь как есть</span></p>
           </div>
         </div>
         <div class="step">
           <span class="step-num">5</span>
           <div class="step-body">
             <strong>Сохрани</strong>
-            <p>Нажми <strong>Apply changes</strong> слева внизу</p>
+            <p>Нажми зелёную кнопку <strong>Apply changes</strong> слева внизу</p>
           </div>
         </div>
         <div class="step">
           <span class="step-num">6</span>
           <div class="step-body">
             <strong>Включи VPN в браузере</strong>
-            <p>Нажми на иконку расширения → выбери профиль «VPN».<br>
-            Чтобы <strong>выключить</strong> — выбери <strong>Direct</strong>.</p>
+            <p>Нажми на иконку расширения — появится меню. Выбери <strong>proxy</strong> (не путай с <em>[System Proxy]</em>).<br>
+            Чтобы <strong>выключить</strong> — выбери <strong>[Direct]</strong>.</p>
           </div>
         </div>
       </div>
@@ -141,8 +229,8 @@
         <div class="step">
           <span class="step-num">3</span>
           <div class="step-body">
-            <strong>Создай новый профиль</strong>
-            <p>Слева нажми <strong>New profile...</strong> → придумай название (например «VPN») → тип оставь <strong>Proxy Profile</strong> → нажми <strong>Create</strong></p>
+            <strong>Открой профиль proxy</strong>
+            <p>Слева в списке уже есть профиль <strong>proxy</strong> — нажми на него</p>
           </div>
         </div>
         <div class="step">
@@ -151,15 +239,16 @@
             <strong>Введи настройки</strong>
             <p>Protocol: <strong>SOCKS5</strong><br>
             Server: <strong>127.0.0.1</strong><br>
-            Port: <strong>1080</strong></p>
+            Port: <strong>1080</strong><br>
+            <span style="color:#888; font-size:0.85rem;">Bypass List трогать не нужно — оставь как есть</span></p>
           </div>
         </div>
         <div class="step">
           <span class="step-num">5</span>
           <div class="step-body">
             <strong>Сохрани и включи</strong>
-            <p>Нажми <strong>Apply changes</strong> → нажми на иконку расширения → выбери профиль «VPN».<br>
-            Чтобы <strong>выключить</strong> — выбери <strong>Direct</strong>.</p>
+            <p>Нажми зелёную кнопку <strong>Apply changes</strong> слева → нажми на иконку расширения — появится меню. Выбери <strong>proxy</strong> (не путай с <em>[System Proxy]</em>).<br>
+            Чтобы <strong>выключить</strong> — выбери <strong>[Direct]</strong>.</p>
           </div>
         </div>
       </div>
@@ -191,8 +280,8 @@
         <div class="step">
           <span class="step-num">4</span>
           <div class="step-body">
-            <strong>Создай новый профиль</strong>
-            <p>Слева нажми <strong>New profile...</strong> → придумай название (например «VPN») → тип оставь <strong>Proxy Profile</strong> → нажми <strong>Create</strong></p>
+            <strong>Открой профиль proxy</strong>
+            <p>Слева в списке уже есть профиль <strong>proxy</strong> — нажми на него</p>
           </div>
         </div>
         <div class="step">
@@ -201,15 +290,16 @@
             <strong>Введи настройки</strong>
             <p>Protocol: <strong>SOCKS5</strong><br>
             Server: <strong>127.0.0.1</strong><br>
-            Port: <strong>1080</strong></p>
+            Port: <strong>1080</strong><br>
+            <span style="color:#888; font-size:0.85rem;">Bypass List трогать не нужно — оставь как есть</span></p>
           </div>
         </div>
         <div class="step">
           <span class="step-num">6</span>
           <div class="step-body">
             <strong>Сохрани и включи</strong>
-            <p>Нажми <strong>Apply changes</strong> → нажми на иконку расширения → выбери профиль «VPN».<br>
-            Чтобы <strong>выключить</strong> — выбери <strong>Direct</strong>.</p>
+            <p>Нажми зелёную кнопку <strong>Apply changes</strong> слева → нажми на иконку расширения — появится меню. Выбери <strong>proxy</strong> (не путай с <em>[System Proxy]</em>).<br>
+            Чтобы <strong>выключить</strong> — выбери <strong>[Direct]</strong>.</p>
           </div>
         </div>
       </div>
@@ -232,8 +322,8 @@
         <div class="step">
           <span class="step-num">3</span>
           <div class="step-body">
-            <strong>Создай новый профиль</strong>
-            <p>Слева нажми <strong>New profile...</strong> → придумай название (например «VPN») → тип оставь <strong>Proxy Profile</strong> → нажми <strong>Create</strong></p>
+            <strong>Открой профиль proxy</strong>
+            <p>Слева в списке уже есть профиль <strong>proxy</strong> — нажми на него</p>
           </div>
         </div>
         <div class="step">
@@ -242,22 +332,23 @@
             <strong>Введи настройки</strong>
             <p>Protocol: <strong>SOCKS5</strong><br>
             Server: <strong>127.0.0.1</strong><br>
-            Port: <strong>1080</strong></p>
+            Port: <strong>1080</strong><br>
+            <span style="color:#888; font-size:0.85rem;">Bypass List трогать не нужно — оставь как есть</span></p>
           </div>
         </div>
         <div class="step">
           <span class="step-num">5</span>
           <div class="step-body">
             <strong>Сохрани</strong>
-            <p>Нажми <strong>Apply changes</strong> слева внизу</p>
+            <p>Нажми зелёную кнопку <strong>Apply changes</strong> слева внизу</p>
           </div>
         </div>
         <div class="step">
           <span class="step-num">6</span>
           <div class="step-body">
             <strong>Включи VPN в браузере</strong>
-            <p>Нажми на иконку расширения → выбери профиль «VPN».<br>
-            Чтобы <strong>выключить</strong> — выбери <strong>Direct</strong>.</p>
+            <p>Нажми на иконку расширения — появится меню. Выбери <strong>proxy</strong> (не путай с <em>[System Proxy]</em>).<br>
+            Чтобы <strong>выключить</strong> — выбери <strong>[Direct]</strong>.</p>
           </div>
         </div>
       </div>
@@ -269,14 +360,16 @@
     </div>
 
   </main>
-  <footer>Outline — проект Jigsaw (Google) для свободного интернета</footer>
+  <footer>Прокси работает через <a href="https://github.com/shadowsocks/shadowsocks-rust" style="color:#aaa;">shadowsocks-rust</a></footer>
   <script>
-    function switchBrowser(name) {
-      document.querySelectorAll('.browser-section').forEach(el => el.classList.remove('active'));
-      document.querySelectorAll('.browser-tab').forEach(el => el.classList.remove('active'));
+    function switchTab(group, name) {
+      document.querySelectorAll('.' + group).forEach(el => el.classList.remove('active'));
+      event.target.closest('.browser-tabs').querySelectorAll('.browser-tab').forEach(el => el.classList.remove('active'));
       document.getElementById(name).classList.add('active');
       event.target.classList.add('active');
     }
+    function switchBrowser(name) { switchTab('browser-section', name); }
+    function switchOS(name) { switchTab('os-section', name); }
 
   </script>
 </body>

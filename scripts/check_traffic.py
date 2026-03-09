@@ -109,7 +109,11 @@ def main():
 
     state[month_key] = sent_this_month
     # Keep only current and previous month in state
-    state = {k: v for k, v in state.items() if k >= f"{now.year}-{now.month - 1:02d}"}
+    if now.month == 1:
+        prev_month_key = f"{now.year - 1}-12"
+    else:
+        prev_month_key = f"{now.year}-{now.month - 1:02d}"
+    state = {k: v for k, v in state.items() if k >= prev_month_key}
     save_state(state)
 
     remaining = max(0, LIMIT_GB - used_gb)
