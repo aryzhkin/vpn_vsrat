@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VPN на телефоне</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #f5f5f5; color: #222; }
+    header { background: #1a1a2e; color: white; padding: 2rem; }
+    header a { color: #aaa; text-decoration: none; font-size: 0.9rem; }
+    header h1 { font-size: 1.4rem; font-weight: 600; margin-top: 0.5rem; }
+    main { max-width: 700px; margin: 2rem auto; padding: 0 1rem; }
+    .card { background: white; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+    .card h2 { font-size: 1.05rem; margin-bottom: 1rem; color: #333; }
+    .card p, .card li { font-size: 0.95rem; line-height: 1.6; color: #444; }
+    .card ol { padding-left: 1.3rem; }
+    .card li { margin-bottom: 0.5rem; }
+    .btn { display: inline-block; margin-top: 1rem; padding: 0.6rem 1.2rem; background: #2255cc; color: white; text-decoration: none; border-radius: 8px; font-size: 0.9rem; }
+    .note { background: #fff8e1; border-left: 3px solid #f5a623; padding: 0.75rem 1rem; border-radius: 0 6px 6px 0; font-size: 0.9rem; color: #555; margin-top: 1rem; }
+    img.screen { width: 100%; max-width: 280px; border-radius: 12px; border: 1px solid #eee; display: block; margin: 1rem auto; }
+    footer { text-align: center; padding: 2rem; color: #aaa; font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html">← Назад</a>
+    <h1>VPN на телефоне</h1>
+  </header>
+  <main>
+
+    <div class="card">
+      <h2>1. Скачай Outline</h2>
+      <p>Установи официальное приложение Outline:</p>
+      <a class="btn" href="https://itunes.apple.com/app/outline-app/id1356177741">App Store (iOS)</a>
+      <a class="btn" href="https://play.google.com/store/apps/details?id=org.outline.android.client">Google Play (Android)</a>
+      <p style="margin-top: 0.75rem; font-size: 0.85rem; color: #888;">Нет Google Play? <a href="https://s3.amazonaws.com/outline-releases/client/android/stable/Outline-Client.apk">Скачать APK напрямую</a></p>
+    </div>
+
+    <div class="card">
+      <h2>2. Получи ключ</h2>
+      <p>Ключ выглядит так: <code style="font-size:0.85rem">ss://XXXXXX@209.38.42.79:20454/...</code></p>
+      <p style="margin-top: 0.5rem;">Попроси его у меня — пришлю в личку. Один ключ = один человек.</p>
+    </div>
+
+    <div class="card">
+      <h2>3. Добавь ключ в Outline</h2>
+      <ol>
+        <li>Открой приложение Outline</li>
+        <li>Нажми <strong>«Добавить сервер»</strong> (или кнопку +)</li>
+        <li>Вставь ключ в поле — он определится автоматически</li>
+        <li>Нажми <strong>«Подключиться»</strong></li>
+      </ol>
+      <div class="note">На iOS при первом подключении появится запрос на добавление VPN-профиля — нажми «Разрешить».</div>
+    </div>
+
+    <div class="card">
+      <h2>4. Проверь</h2>
+      <ol>
+        <li>Загугли «какой у меня IP»</li>
+        <li>Должен показать IP сервера (209.38.42.79), а не твой домашний</li>
+      </ol>
+      <div class="note">
+        <strong>Zapret / Booster:</strong> отключи их когда VPN включён — они могут мешать маршрутизации. С VPN Discord и другие заблокированные сервисы работают и так.
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Включать VPN не для всего трафика?</h2>
+      <p>На мобилке Outline работает как системный VPN — весь трафик идёт через него. Выборочно по приложениям нативно не поддерживается.</p>
+      <p style="margin-top: 0.5rem;">Если хочешь только браузер — смотри <a href="browser.html">инструкцию для десктопа</a> (на телефоне это не настраивается удобно).</p>
+    </div>
+
+  </main>
+  <footer>Outline — проект Jigsaw (Google) для свободного интернета</footer>
+</body>
+</html>
