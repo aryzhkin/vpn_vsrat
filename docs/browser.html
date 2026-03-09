@@ -69,6 +69,8 @@
 
       <div class="browser-tabs" style="margin-top: 0.8rem;">
         <button class="browser-tab active" onclick="switchBrowser('chrome')">Chrome / Edge</button>
+        <button class="browser-tab" onclick="switchBrowser('yandex')">Яндекс</button>
+        <button class="browser-tab" onclick="switchBrowser('opera')">Opera</button>
         <button class="browser-tab" onclick="switchBrowser('firefox')">Firefox</button>
       </div>
 
@@ -115,6 +117,98 @@
           <div class="step-body">
             <strong>Включи VPN в браузере</strong>
             <p>Нажми на иконку расширения → выбери профиль «VPN».<br>
+            Чтобы <strong>выключить</strong> — выбери <strong>Direct</strong>.</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="yandex" class="browser-section">
+        <div class="step">
+          <span class="step-num">1</span>
+          <div class="step-body">
+            <strong>Установи расширение Proxy SwitchyOmega</strong>
+            <p>Яндекс Браузер поддерживает расширения Chrome — ссылка та же:<br>
+            <a href="https://chrome.google.com/webstore/detail/proxy-switchyomega/padekgcemlokbadohgkifijomclgjgif" target="_blank">Открыть в Chrome Web Store →</a></p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-num">2</span>
+          <div class="step-body">
+            <strong>Открой настройки расширения</strong>
+            <p>Нажми на иконку расширения → <strong>Options</strong></p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-num">3</span>
+          <div class="step-body">
+            <strong>Создай новый профиль</strong>
+            <p>Слева нажми <strong>New profile...</strong> → придумай название (например «VPN») → тип оставь <strong>Proxy Profile</strong> → нажми <strong>Create</strong></p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-num">4</span>
+          <div class="step-body">
+            <strong>Введи настройки</strong>
+            <p>Protocol: <strong>SOCKS5</strong><br>
+            Server: <strong>127.0.0.1</strong><br>
+            Port: <strong>1080</strong></p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-num">5</span>
+          <div class="step-body">
+            <strong>Сохрани и включи</strong>
+            <p>Нажми <strong>Apply changes</strong> → нажми на иконку расширения → выбери профиль «VPN».<br>
+            Чтобы <strong>выключить</strong> — выбери <strong>Direct</strong>.</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="opera" class="browser-section">
+        <div class="step">
+          <span class="step-num">1</span>
+          <div class="step-body">
+            <strong>Разреши установку расширений Chrome</strong>
+            <p>Opera по умолчанию не открывает Chrome Web Store. Сначала поставь:<br>
+            <a href="https://addons.opera.com/ru/extensions/details/install-chrome-extensions/" target="_blank">Install Chrome Extensions (Opera addons) →</a></p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-num">2</span>
+          <div class="step-body">
+            <strong>Установи Proxy SwitchyOmega</strong>
+            <p>Теперь Chrome Web Store откроется в Opera:<br>
+            <a href="https://chrome.google.com/webstore/detail/proxy-switchyomega/padekgcemlokbadohgkifijomclgjgif" target="_blank">Открыть в Chrome Web Store →</a></p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-num">3</span>
+          <div class="step-body">
+            <strong>Открой настройки расширения</strong>
+            <p>Нажми на иконку расширения → <strong>Options</strong></p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-num">4</span>
+          <div class="step-body">
+            <strong>Создай новый профиль</strong>
+            <p>Слева нажми <strong>New profile...</strong> → придумай название (например «VPN») → тип оставь <strong>Proxy Profile</strong> → нажми <strong>Create</strong></p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-num">5</span>
+          <div class="step-body">
+            <strong>Введи настройки</strong>
+            <p>Protocol: <strong>SOCKS5</strong><br>
+            Server: <strong>127.0.0.1</strong><br>
+            Port: <strong>1080</strong></p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-num">6</span>
+          <div class="step-body">
+            <strong>Сохрани и включи</strong>
+            <p>Нажми <strong>Apply changes</strong> → нажми на иконку расширения → выбери профиль «VPN».<br>
             Чтобы <strong>выключить</strong> — выбери <strong>Direct</strong>.</p>
           </div>
         </div>
@@ -183,6 +277,7 @@
       document.getElementById(name).classList.add('active');
       event.target.classList.add('active');
     }
+
   </script>
 </body>
 </html>
