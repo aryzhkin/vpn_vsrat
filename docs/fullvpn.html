@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Полный VPN на компьютере</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #f5f5f5; color: #222; }
+    header { background: #1a1a2e; color: white; padding: 1.5rem 2rem; }
+    header a { color: #aaa; text-decoration: none; font-size: 0.9rem; }
+    header h1 { font-size: 1.4rem; font-weight: 600; margin-top: 0.4rem; }
+    header p { color: #aaa; font-size: 0.9rem; margin-top: 0.3rem; }
+    main { max-width: 680px; margin: 2rem auto; padding: 0 1rem; }
+    .card { background: white; border-radius: 14px; padding: 1.5rem; margin-bottom: 1.2rem; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+    .card h2 { font-size: 1rem; font-weight: 700; margin-bottom: 0.9rem; color: #1a1a2e; }
+    .card p, .card li { font-size: 0.95rem; line-height: 1.65; color: #444; }
+    .card ol { padding-left: 1.3rem; }
+    .card li { margin-bottom: 0.6rem; }
+    .note { background: #fff8e1; border-left: 3px solid #f5a623; padding: 0.75rem 1rem; border-radius: 0 8px 8px 0; font-size: 0.9rem; color: #555; margin-top: 0.9rem; }
+    .warn { background: #fce4ec; border-left: 3px solid #e53935; padding: 0.75rem 1rem; border-radius: 0 8px 8px 0; font-size: 0.9rem; color: #5a1a1a; margin-bottom: 1rem; }
+    .btn { display: inline-block; margin-top: 0.75rem; padding: 0.6rem 1.2rem; background: #2255cc; color: white; text-decoration: none; border-radius: 8px; font-size: 0.9rem; }
+    .btn + .btn { margin-left: 0.5rem; }
+    footer { text-align: center; padding: 2rem; color: #aaa; font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html">← Назад</a>
+    <h1>Полный VPN на компьютере</h1>
+    <p>Весь трафик идёт через VPN</p>
+  </header>
+  <main>
+
+    <div class="card">
+      <div class="warn">
+        Если ты играешь в онлайн-игры или используешь Zapret / Booster — этот вариант не для тебя.<br>
+        Игры будут лагать, Zapret может конфликтовать. Используй <a href="browser.html">вариант только для браузера</a>.
+      </div>
+      <p>Этот вариант подходит если ты просто хочешь читать новости, смотреть YouTube или пользоваться заблокированными сайтами на компьютере — и не играешь в онлайн-игры.</p>
+    </div>
+
+    <div class="card">
+      <h2>Шаг 1. Установи Outline</h2>
+      <a class="btn" href="https://s3.amazonaws.com/outline-releases/client/windows/stable/Outline-Client.exe">Скачать для Windows</a>
+      <a class="btn" href="https://itunes.apple.com/app/outline-app/id1356178125">Скачать для macOS</a>
+    </div>
+
+    <div class="card">
+      <h2>Шаг 2. Добавь ключ и подключись</h2>
+      <ol>
+        <li>Открой Outline</li>
+        <li>Нажми <strong>«Добавить сервер»</strong> и вставь ключ <strong>ss://...</strong>, который прислал тебе я</li>
+        <li>Нажми <strong>«Подключиться»</strong></li>
+      </ol>
+      <div class="note">
+        Чтобы выключить VPN — открой Outline и нажми «Отключиться». Или выйди из программы.
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Как проверить что всё работает?</h2>
+      <p>Загугли <strong>«какой у меня IP»</strong> — должен показать <strong>209.38.42.79</strong> (наш сервер в Амстердаме), а не твой домашний адрес.</p>
+    </div>
+
+  </main>
+  <footer>Outline — проект Jigsaw (Google) для свободного интернета</footer>
+</body>
+</html>
