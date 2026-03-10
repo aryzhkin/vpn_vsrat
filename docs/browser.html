@@ -21,9 +21,9 @@
     .note { background: #fff8e1; border-left: 3px solid #f5a623; padding: 0.75rem 1rem; border-radius: 0 8px 8px 0; font-size: 0.9rem; color: #555; margin-top: 0.9rem; }
     .btn { display: inline-block; margin-top: 0.8rem; padding: 0.6rem 1.2rem; background: #2255cc; color: white; text-decoration: none; border-radius: 8px; font-size: 0.9rem; }
     .btn + .btn { margin-left: 0.5rem; }
-    .browser-tabs { display: flex; gap: 0.5rem; margin-bottom: 1rem; }
-    .browser-tab { padding: 0.45rem 1rem; border-radius: 20px; border: 1px solid #ddd; font-size: 0.85rem; cursor: pointer; background: white; color: #555; }
-    .browser-tab.active { background: #2255cc; color: white; border-color: #2255cc; }
+    .tabs { display: flex; gap: 0.5rem; margin-bottom: 1rem; }
+    .tab { padding: 0.45rem 1rem; border-radius: 20px; border: 1px solid #ddd; font-size: 0.85rem; cursor: pointer; background: white; color: #555; }
+    .tab.active { background: #2255cc; color: white; border-color: #2255cc; }
     .browser-section { display: none; }
     .browser-section.active { display: block; }
     .os-section { display: none; }
@@ -49,57 +49,48 @@
         Zapret и Booster продолжат работать как обычно — конфликтов нет.<br>
         Игры идут напрямую (пинг не меняется), Discord через Zapret как раньше, браузер — через VPN.
       </div>
-      <p>Для этого нужно запустить <strong>локальный прокси</strong> (работает в фоне, не требует установки) и настроить <strong>расширение для браузера</strong> (переключает трафик).</p>
+      <p>Нужно установить <strong>программу-прокси</strong> (работает в фоне) и настроить <strong>расширение для браузера</strong> (переключает трафик).</p>
     </div>
 
     <div class="card">
-      <h2>Шаг 1. Запусти прокси</h2>
+      <h2>Шаг 1. Установи прокси</h2>
       <p>Выбери свою систему:</p>
 
-      <div class="browser-tabs" style="margin-top: 0.8rem;">
-        <button class="browser-tab active" onclick="switchOS('os-win')">Windows</button>
-        <button class="browser-tab" onclick="switchOS('os-mac')">macOS</button>
+      <div class="tabs" style="margin-top: 0.8rem;">
+        <button class="tab active" onclick="switchOS('os-win')">Windows</button>
+        <button class="tab" onclick="switchOS('os-mac')">macOS</button>
       </div>
 
       <div id="os-win" class="os-section active">
         <div class="step">
           <span class="step-num">1</span>
           <div class="step-body">
-            <strong>Создай папку</strong>
-            <p>Создай папку, например <strong>vpn-proxy</strong> на рабочем столе</p>
+            <strong>Скачай v2rayN</strong>
+            <p><a href="https://github.com/2dust/v2rayN/releases/latest" target="_blank">Открыть страницу загрузки →</a><br>
+            Скачай файл <strong>v2rayN-windows-64.zip</strong>, распакуй в любую папку и запусти <strong>v2rayN.exe</strong></p>
           </div>
         </div>
         <div class="step">
           <span class="step-num">2</span>
           <div class="step-body">
-            <strong>Скачай sslocal</strong>
-            <p><a href="https://github.com/shadowsocks/shadowsocks-rust/releases/latest" target="_blank">Открыть страницу загрузки →</a><br>
-            Пролистай вниз до раздела <strong>Assets</strong> и скачай файл <strong>shadowsocks-...-x86_64-pc-windows-msvc.zip</strong>.<br>
-            Открой архив — внутри будет папка с файлами. Найди <strong>sslocal.exe</strong> и перетащи его в свою папку vpn-proxy (рядом с start-proxy.bat и key.txt).</p>
+            <strong>Импортируй ключ</strong>
+            <p>Скопируй ссылку <strong>vless://...</strong> которую прислал тебе я.<br>
+            В v2rayN нажми <strong>Servers → Import bulk URL from clipboard</strong></p>
           </div>
         </div>
         <div class="step">
           <span class="step-num">3</span>
           <div class="step-body">
-            <strong>Скачай скрипт запуска</strong>
-            <p><a href="start-proxy.bat" download>Скачать start-proxy.bat →</a><br>
-            Положи в ту же папку</p>
+            <strong>Выбери режим прокси</strong>
+            <p>Внизу окна v2rayN переключи режим на <strong>Nothing</strong> — это важно, чтобы VPN работал только в браузере, а не на всём компьютере.</p>
           </div>
         </div>
         <div class="step">
           <span class="step-num">4</span>
           <div class="step-body">
-            <strong>Добавь ключ</strong>
-            <p>Создай в папке текстовый файл <strong>key.txt</strong> и вставь в него ключ <strong>ss://...</strong>, который прислал тебе я.<br>
-            <span style="color:#888; font-size:0.85rem;">В файле должна быть только одна строка — сам ключ, больше ничего.</span></p>
-          </div>
-        </div>
-        <div class="step">
-          <span class="step-num">5</span>
-          <div class="step-body">
-            <strong>Запусти</strong>
-            <p>Дважды кликни <strong>start-proxy.bat</strong> — появится чёрное окно с текстом «Прокси работает».<br>
-            Не закрывай это окно пока хочешь использовать VPN в браузере.</p>
+            <strong>Подключись</strong>
+            <p>Выбери сервер в списке и нажми <strong>Enter</strong>. Внизу окна появится статус подключения.<br>
+            <span style="color:#888; font-size:0.85rem;">v2rayN создаст локальный прокси на порту 10808 — его мы укажем в расширении браузера.</span></p>
           </div>
         </div>
       </div>
@@ -108,42 +99,25 @@
         <div class="step">
           <span class="step-num">1</span>
           <div class="step-body">
-            <strong>Установи sslocal через Homebrew</strong>
-            <p>Открой <strong>Терминал</strong> (Finder → Программы → Утилиты → Терминал) и выполни:<br>
-            <code style="background:#f0f0f0; padding:0.2rem 0.5rem; border-radius:4px; font-size:0.85rem;">brew install shadowsocks-rust</code><br>
-            <span style="color:#888; font-size:0.85rem;">Если Homebrew не установлен: <a href="https://brew.sh" target="_blank">brew.sh</a></span></p>
+            <strong>Скачай V2RayXS</strong>
+            <p><a href="https://github.com/tzmax/V2RayXS/releases/latest" target="_blank">Открыть страницу загрузки →</a><br>
+            Скачай .dmg файл, открой и перетащи в Applications</p>
           </div>
         </div>
         <div class="step">
           <span class="step-num">2</span>
           <div class="step-body">
-            <strong>Создай папку</strong>
-            <p>Создай папку, например <strong>vpn-proxy</strong> на рабочем столе</p>
+            <strong>Импортируй ключ</strong>
+            <p>Скопируй ссылку <strong>vless://...</strong> которую прислал тебе я.<br>
+            Нажми на иконку V2RayXS в меню → <strong>Import from pasteboard</strong></p>
           </div>
         </div>
         <div class="step">
           <span class="step-num">3</span>
           <div class="step-body">
-            <strong>Скачай скрипт запуска</strong>
-            <p><a href="start-proxy.sh" download>Скачать start-proxy.sh →</a><br>
-            Положи в папку vpn-proxy</p>
-          </div>
-        </div>
-        <div class="step">
-          <span class="step-num">4</span>
-          <div class="step-body">
-            <strong>Добавь ключ</strong>
-            <p>Создай в папке текстовый файл <strong>key.txt</strong> и вставь в него ключ <strong>ss://...</strong>, который прислал тебе я.<br>
-            <span style="color:#888; font-size:0.85rem;">В файле должна быть только одна строка — сам ключ, больше ничего.</span></p>
-          </div>
-        </div>
-        <div class="step">
-          <span class="step-num">5</span>
-          <div class="step-body">
-            <strong>Запусти</strong>
-            <p>В Терминале перейди в папку и запусти скрипт:<br>
-            <code style="background:#f0f0f0; padding:0.2rem 0.5rem; border-radius:4px; font-size:0.85rem;">cd ~/Desktop/vpn-proxy && bash start-proxy.sh</code><br>
-            Появится текст «Прокси работает». Не закрывай Терминал.</p>
+            <strong>Выбери режим Manual</strong>
+            <p>Нажми на иконку в меню → <strong>Manual Mode</strong>, затем <strong>Turn v2ray-core On</strong>.<br>
+            <span style="color:#888; font-size:0.85rem;">В Manual Mode прокси работает на порту 1080 — его мы укажем в расширении браузера.</span></p>
           </div>
         </div>
       </div>
@@ -155,11 +129,11 @@
       <h2>Шаг 2. Установи расширение для браузера</h2>
       <p>Выбери свой браузер:</p>
 
-      <div class="browser-tabs" style="margin-top: 0.8rem;">
-        <button class="browser-tab active" onclick="switchBrowser('chrome')">Chrome / Edge</button>
-        <button class="browser-tab" onclick="switchBrowser('yandex')">Яндекс</button>
-        <button class="browser-tab" onclick="switchBrowser('opera')">Opera</button>
-        <button class="browser-tab" onclick="switchBrowser('firefox')">Firefox</button>
+      <div class="tabs" style="margin-top: 0.8rem;">
+        <button class="tab active" onclick="switchBrowser('chrome')">Chrome / Edge</button>
+        <button class="tab" onclick="switchBrowser('yandex')">Яндекс</button>
+        <button class="tab" onclick="switchBrowser('opera')">Opera</button>
+        <button class="tab" onclick="switchBrowser('firefox')">Firefox</button>
       </div>
 
       <div id="chrome" class="browser-section active">
@@ -190,7 +164,7 @@
             <strong>Введи настройки</strong>
             <p>В поле Protocol выбери <strong>SOCKS5</strong><br>
             Server: <strong>127.0.0.1</strong><br>
-            Port: <strong>1080</strong><br>
+            Port: <strong>10808</strong> (Windows) или <strong>1080</strong> (macOS)<br>
             <span style="color:#888; font-size:0.85rem;">Bypass List трогать не нужно — оставь как есть</span></p>
           </div>
         </div>
@@ -206,7 +180,7 @@
           <div class="step-body">
             <strong>Включи VPN в браузере</strong>
             <p>Нажми на иконку расширения — появится меню. Выбери <strong>proxy</strong> (не путай с <em>[System Proxy]</em>).<br>
-            Чтобы <strong>выключить</strong> — выбери <strong>[Direct]</strong> и закрой окно прокси.</p>
+            Чтобы <strong>выключить</strong> — выбери <strong>[Direct]</strong>.</p>
           </div>
         </div>
       </div>
@@ -240,7 +214,7 @@
             <strong>Введи настройки</strong>
             <p>Protocol: <strong>SOCKS5</strong><br>
             Server: <strong>127.0.0.1</strong><br>
-            Port: <strong>1080</strong><br>
+            Port: <strong>10808</strong> (Windows) или <strong>1080</strong> (macOS)<br>
             <span style="color:#888; font-size:0.85rem;">Bypass List трогать не нужно — оставь как есть</span></p>
           </div>
         </div>
@@ -249,7 +223,7 @@
           <div class="step-body">
             <strong>Сохрани и включи</strong>
             <p>Нажми зелёную кнопку <strong>Apply changes</strong> слева → нажми на иконку расширения — появится меню. Выбери <strong>proxy</strong> (не путай с <em>[System Proxy]</em>).<br>
-            Чтобы <strong>выключить</strong> — выбери <strong>[Direct]</strong> и закрой окно прокси.</p>
+            Чтобы <strong>выключить</strong> — выбери <strong>[Direct]</strong>.</p>
           </div>
         </div>
       </div>
@@ -291,7 +265,7 @@
             <strong>Введи настройки</strong>
             <p>Protocol: <strong>SOCKS5</strong><br>
             Server: <strong>127.0.0.1</strong><br>
-            Port: <strong>1080</strong><br>
+            Port: <strong>10808</strong> (Windows) или <strong>1080</strong> (macOS)<br>
             <span style="color:#888; font-size:0.85rem;">Bypass List трогать не нужно — оставь как есть</span></p>
           </div>
         </div>
@@ -300,7 +274,7 @@
           <div class="step-body">
             <strong>Сохрани и включи</strong>
             <p>Нажми зелёную кнопку <strong>Apply changes</strong> слева → нажми на иконку расширения — появится меню. Выбери <strong>proxy</strong> (не путай с <em>[System Proxy]</em>).<br>
-            Чтобы <strong>выключить</strong> — выбери <strong>[Direct]</strong> и закрой окно прокси.</p>
+            Чтобы <strong>выключить</strong> — выбери <strong>[Direct]</strong>.</p>
           </div>
         </div>
       </div>
@@ -333,7 +307,7 @@
             <strong>Введи настройки</strong>
             <p>Protocol: <strong>SOCKS5</strong><br>
             Server: <strong>127.0.0.1</strong><br>
-            Port: <strong>1080</strong><br>
+            Port: <strong>10808</strong> (Windows) или <strong>1080</strong> (macOS)<br>
             <span style="color:#888; font-size:0.85rem;">Bypass List трогать не нужно — оставь как есть</span></p>
           </div>
         </div>
@@ -349,7 +323,7 @@
           <div class="step-body">
             <strong>Включи VPN в браузере</strong>
             <p>Нажми на иконку расширения — появится меню. Выбери <strong>proxy</strong> (не путай с <em>[System Proxy]</em>).<br>
-            Чтобы <strong>выключить</strong> — выбери <strong>[Direct]</strong> и закрой окно прокси.</p>
+            Чтобы <strong>выключить</strong> — выбери <strong>[Direct]</strong>.</p>
           </div>
         </div>
       </div>
@@ -361,17 +335,16 @@
     </div>
 
   </main>
-  <footer>Прокси работает через <a href="https://github.com/shadowsocks/shadowsocks-rust" style="color:#aaa;">shadowsocks-rust</a></footer>
+  <footer>Прокси работает через <a href="https://github.com/XTLS/Xray-core" style="color:#aaa;">XRay</a> — протокол VLESS с маскировкой под обычный HTTPS</footer>
   <script>
     function switchTab(group, name) {
       document.querySelectorAll('.' + group).forEach(el => el.classList.remove('active'));
-      event.target.closest('.browser-tabs').querySelectorAll('.browser-tab').forEach(el => el.classList.remove('active'));
+      event.target.closest('.tabs').querySelectorAll('.tab').forEach(el => el.classList.remove('active'));
       document.getElementById(name).classList.add('active');
       event.target.classList.add('active');
     }
     function switchBrowser(name) { switchTab('browser-section', name); }
     function switchOS(name) { switchTab('os-section', name); }
-
   </script>
 </body>
 </html>

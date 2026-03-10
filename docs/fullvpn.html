@@ -18,9 +18,18 @@
     .card ol { padding-left: 1.3rem; }
     .card li { margin-bottom: 0.6rem; }
     .note { background: #fff8e1; border-left: 3px solid #f5a623; padding: 0.75rem 1rem; border-radius: 0 8px 8px 0; font-size: 0.9rem; color: #555; margin-top: 0.9rem; }
-    .warn { background: #fce4ec; border-left: 3px solid #e53935; padding: 0.75rem 1rem; border-radius: 0 8px 8px 0; font-size: 0.9rem; color: #5a1a1a; margin-bottom: 1rem; }
     .btn { display: inline-block; margin-top: 0.75rem; padding: 0.6rem 1.2rem; background: #2255cc; color: white; text-decoration: none; border-radius: 8px; font-size: 0.9rem; }
     .btn + .btn { margin-left: 0.5rem; }
+    .step { display: flex; align-items: flex-start; margin-bottom: 0.9rem; }
+    .step-num { display: inline-flex; align-items: center; justify-content: center; background: #2255cc; color: white; border-radius: 50%; width: 1.6rem; height: 1.6rem; font-size: 0.8rem; font-weight: 700; margin-right: 0.5rem; flex-shrink: 0; }
+    .step-body { flex: 1; padding-top: 0.1rem; }
+    .step-body strong { display: block; font-size: 0.95rem; margin-bottom: 0.2rem; }
+    .step-body p { font-size: 0.9rem; color: #555; margin: 0; }
+    .os-tabs { display: flex; gap: 0.5rem; margin-bottom: 1rem; }
+    .os-tab { padding: 0.45rem 1rem; border-radius: 20px; border: 1px solid #ddd; font-size: 0.85rem; cursor: pointer; background: white; color: #555; }
+    .os-tab.active { background: #2255cc; color: white; border-color: #2255cc; }
+    .os-section { display: none; }
+    .os-section.active { display: block; }
     footer { text-align: center; padding: 2rem; color: #aaa; font-size: 0.85rem; }
   </style>
 </head>
@@ -42,21 +51,99 @@
     </div>
 
     <div class="card">
-      <h2>Шаг 1. Установи Outline</h2>
-      <a class="btn" href="https://s3.amazonaws.com/outline-releases/client/windows/stable/Outline-Client.exe">Скачать для Windows</a>
-      <a class="btn" href="https://itunes.apple.com/app/outline-app/id1356178125">Скачать для macOS</a>
+      <h2>Шаг 1. Скачай приложение</h2>
+      <p>Выбери свою систему:</p>
+
+      <div class="os-tabs" style="margin-top: 0.8rem;">
+        <button class="os-tab active" onclick="switchOS('os-win')">Windows</button>
+        <button class="os-tab" onclick="switchOS('os-mac')">macOS</button>
+      </div>
+
+      <div id="os-win" class="os-section active">
+        <p>Скачай <strong>v2rayN</strong> — бесплатная программа для VPN:</p>
+        <a class="btn" href="https://github.com/2dust/v2rayN/releases/latest" target="_blank">Скачать v2rayN (GitHub)</a>
+        <p style="margin-top: 0.7rem; font-size: 0.85rem; color: #888;">Скачай файл <strong>v2rayN-windows-64.zip</strong>, распакуй в любую папку и запусти <strong>v2rayN.exe</strong></p>
+      </div>
+
+      <div id="os-mac" class="os-section">
+        <p>Скачай <strong>V2RayXS</strong>:</p>
+        <a class="btn" href="https://github.com/tzmax/V2RayXS/releases/latest" target="_blank">Скачать V2RayXS (GitHub)</a>
+        <p style="margin-top: 0.7rem; font-size: 0.85rem; color: #888;">Скачай .dmg файл, открой и перетащи в Applications</p>
+      </div>
     </div>
 
     <div class="card">
       <h2>Шаг 2. Добавь ключ и подключись</h2>
-      <ol>
-        <li>Открой Outline</li>
-        <li>Нажми <strong>«Добавить сервер»</strong> и вставь ключ <strong>ss://...</strong>, который прислал тебе я</li>
-        <li>Нажми <strong>«Подключиться»</strong></li>
-      </ol>
-      <div class="note">
-        Чтобы выключить VPN — открой Outline и нажми «Отключиться». Или выйди из программы.
+
+      <div class="os-tabs" style="margin-top: 0.2rem;">
+        <button class="os-tab active" onclick="switchOS('steps-win')">Windows</button>
+        <button class="os-tab" onclick="switchOS('steps-mac')">macOS</button>
       </div>
+
+      <div id="steps-win" class="os-section active">
+        <div class="step">
+          <span class="step-num">1</span>
+          <div class="step-body">
+            <strong>Скопируй ключ</strong>
+            <p>Скопируй ссылку <strong>vless://...</strong>, которую прислал тебе я</p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-num">2</span>
+          <div class="step-body">
+            <strong>Импортируй в v2rayN</strong>
+            <p>В v2rayN нажми <strong>Servers → Import bulk URL from clipboard</strong></p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-num">3</span>
+          <div class="step-body">
+            <strong>Включи TUN-режим</strong>
+            <p>Внизу окна переключи режим на <strong>TUN Mode</strong> — весь трафик пойдёт через VPN.<br>
+            <span style="color:#888; font-size:0.85rem;">Программа может попросить запуститься от имени администратора — это нормально, TUN требует права для создания сетевого адаптера.</span></p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-num">4</span>
+          <div class="step-body">
+            <strong>Подключись</strong>
+            <p>Выбери сервер в списке и нажми <strong>Enter</strong> или кнопку подключения</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="steps-mac" class="os-section">
+        <div class="step">
+          <span class="step-num">1</span>
+          <div class="step-body">
+            <strong>Скопируй ключ</strong>
+            <p>Скопируй ссылку <strong>vless://...</strong>, которую прислал тебе я</p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-num">2</span>
+          <div class="step-body">
+            <strong>Импортируй</strong>
+            <p>Нажми на иконку V2RayXS в меню → <strong>Import from pasteboard</strong></p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-num">3</span>
+          <div class="step-body">
+            <strong>Включи Global Mode</strong>
+            <p>Нажми на иконку в меню → <strong>Global Mode</strong>, затем <strong>Turn v2ray-core On</strong></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="note">
+        Чтобы выключить VPN — переключи режим обратно или закрой программу.
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Не работает? Попробуй запасной протокол</h2>
+      <p>Если основной ключ не подключается — напиши мне, пришлю запасной ключ <strong>hy2://</strong> (Hysteria2).</p>
     </div>
 
     <div class="card">
@@ -65,6 +152,14 @@
     </div>
 
   </main>
-  <footer>Outline — проект Jigsaw (Google) для свободного интернета</footer>
+  <footer>Работает через <a href="https://github.com/XTLS/Xray-core" style="color:#aaa;">XRay</a> — протокол VLESS с маскировкой под обычный HTTPS</footer>
+  <script>
+    function switchOS(name) {
+      document.querySelectorAll('.os-section').forEach(el => el.classList.remove('active'));
+      event.target.closest('.os-tabs').querySelectorAll('.os-tab').forEach(el => el.classList.remove('active'));
+      document.getElementById(name).classList.add('active');
+      event.target.classList.add('active');
+    }
+  </script>
 </body>
 </html>

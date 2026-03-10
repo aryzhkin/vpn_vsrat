@@ -24,6 +24,11 @@
     .step-body { flex: 1; padding-top: 0.1rem; }
     .step-body strong { display: block; font-size: 0.95rem; margin-bottom: 0.2rem; }
     .step-body p { font-size: 0.9rem; color: #555; margin: 0; }
+    .os-tabs { display: flex; gap: 0.5rem; margin-bottom: 1rem; }
+    .os-tab { padding: 0.45rem 1rem; border-radius: 20px; border: 1px solid #ddd; font-size: 0.85rem; cursor: pointer; background: white; color: #555; }
+    .os-tab.active { background: #2255cc; color: white; border-color: #2255cc; }
+    .os-section { display: none; }
+    .os-section.active { display: block; }
     footer { text-align: center; padding: 2rem; color: #aaa; font-size: 0.85rem; }
   </style>
 </head>
@@ -35,44 +40,96 @@
   <main>
 
     <div class="card">
-      <h2>Шаг 1. Скачай приложение Outline</h2>
-      <a class="btn" href="https://itunes.apple.com/app/outline-app/id1356177741">App Store (iPhone)</a>
-      <a class="btn" href="https://play.google.com/store/apps/details?id=org.outline.android.client">Google Play (Android)</a>
-      <p style="margin-top: 0.9rem; font-size: 0.85rem; color: #888;">Нет Google Play? <a href="https://s3.amazonaws.com/outline-releases/client/android/stable/Outline-Client.apk">Скачать APK напрямую</a></p>
+      <h2>Шаг 1. Скачай приложение</h2>
+      <p>Выбери свою систему:</p>
+
+      <div class="os-tabs" style="margin-top: 0.8rem;">
+        <button class="os-tab active" onclick="switchOS('os-android')">Android</button>
+        <button class="os-tab" onclick="switchOS('os-ios')">iPhone</button>
+      </div>
+
+      <div id="os-android" class="os-section active">
+        <p>Скачай <strong>v2rayNG</strong> — это бесплатное приложение для VPN-подключения:</p>
+        <a class="btn" href="https://play.google.com/store/apps/details?id=com.v2ray.ang" target="_blank">Google Play</a>
+        <p style="margin-top: 0.7rem; font-size: 0.85rem; color: #888;">Нет Google Play? <a href="https://github.com/2dust/v2rayNG/releases/latest" target="_blank">Скачать APK с GitHub</a></p>
+      </div>
+
+      <div id="os-ios" class="os-section">
+        <p>Скачай <strong>Streisand</strong> — бесплатное приложение для VPN:</p>
+        <a class="btn" href="https://apps.apple.com/app/streisand/id6450534064" target="_blank">App Store</a>
+      </div>
     </div>
 
     <div class="card">
       <h2>Шаг 2. Получи ключ</h2>
-      <p>Напиши мне — пришлю личный ключ. Он выглядит как длинная ссылка, начинающаяся с <strong>ss://</strong></p>
+      <p>Напиши мне — пришлю личный ключ. Он выглядит как длинная ссылка, начинающаяся с <strong>vless://</strong></p>
       <p style="margin-top: 0.5rem; font-size: 0.9rem; color: #888;">У каждого свой ключ — не передавай его другим.</p>
     </div>
 
     <div class="card">
       <h2>Шаг 3. Подключись</h2>
-      <div class="step">
-        <span class="step-num">1</span>
-        <div class="step-body">
-          <strong>Открой Outline</strong>
-          <p>Нажми кнопку <strong>+</strong> или «Добавить сервер»</p>
+
+      <div class="os-tabs" style="margin-top: 0.2rem;">
+        <button class="os-tab active" onclick="switchOS('steps-android')">Android</button>
+        <button class="os-tab" onclick="switchOS('steps-ios')">iPhone</button>
+      </div>
+
+      <div id="steps-android" class="os-section active">
+        <div class="step">
+          <span class="step-num">1</span>
+          <div class="step-body">
+            <strong>Открой v2rayNG</strong>
+            <p>Нажми <strong>+</strong> вверху справа → <strong>Import config from Clipboard</strong></p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-num">2</span>
+          <div class="step-body">
+            <strong>Вставь ключ</strong>
+            <p>Скопируй ссылку vless://... — приложение подхватит её автоматически</p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-num">3</span>
+          <div class="step-body">
+            <strong>Подключись</strong>
+            <p>Нажми большую кнопку <strong>V</strong> внизу экрана. При первом запуске разреши создание VPN-подключения.</p>
+          </div>
         </div>
       </div>
-      <div class="step">
-        <span class="step-num">2</span>
-        <div class="step-body">
-          <strong>Вставь ключ</strong>
-          <p>Скопируй ссылку ss://... и вставь в поле — сервер определится автоматически</p>
+
+      <div id="steps-ios" class="os-section">
+        <div class="step">
+          <span class="step-num">1</span>
+          <div class="step-body">
+            <strong>Открой Streisand</strong>
+            <p>Нажми <strong>+</strong> → <strong>Add from clipboard</strong></p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-num">2</span>
+          <div class="step-body">
+            <strong>Вставь ключ</strong>
+            <p>Скопируй ссылку vless://... — сервер появится в списке</p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-num">3</span>
+          <div class="step-body">
+            <strong>Подключись</strong>
+            <p>Нажми на сервер, затем кнопку подключения. Разреши добавить VPN-конфигурацию.</p>
+          </div>
         </div>
       </div>
-      <div class="step">
-        <span class="step-num">3</span>
-        <div class="step-body">
-          <strong>Нажми «Подключиться»</strong>
-          <p>На iPhone появится запрос «Разрешить добавить VPN» — нажми <strong>Разрешить</strong></p>
-        </div>
-      </div>
+
       <div class="note">
-        Когда VPN включён, вверху телефона появляется иконка VPN. Чтобы выключить — открой Outline и нажми «Отключиться».
+        Когда VPN включён, вверху телефона появляется иконка VPN. Чтобы выключить — открой приложение и нажми кнопку отключения.
       </div>
+    </div>
+
+    <div class="card">
+      <h2>Не работает? Попробуй запасной протокол</h2>
+      <p>Если основной ключ не подключается — напиши мне, пришлю запасной ключ <strong>hy2://</strong> (Hysteria2). Он работает по-другому и обходит блокировки, которые ловят основной протокол.</p>
     </div>
 
     <div class="card">
@@ -82,6 +139,14 @@
     </div>
 
   </main>
-  <footer>Outline — проект Jigsaw (Google) для свободного интернета</footer>
+  <footer>Работает через <a href="https://github.com/XTLS/Xray-core" style="color:#aaa;">XRay</a> — протокол VLESS с маскировкой под обычный HTTPS</footer>
+  <script>
+    function switchOS(name) {
+      document.querySelectorAll('.os-section').forEach(el => el.classList.remove('active'));
+      event.target.closest('.os-tabs').querySelectorAll('.os-tab').forEach(el => el.classList.remove('active'));
+      document.getElementById(name).classList.add('active');
+      event.target.classList.add('active');
+    }
+  </script>
 </body>
 </html>
