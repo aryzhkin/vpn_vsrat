@@ -16,7 +16,7 @@ VPN-сервер для доступа к независимым СМИ и YouTu
 Размещены на GitHub Pages: [docs/](docs/)
 
 - [Главная](docs/index.html) — выбор варианта
-- [Телефон](docs/mobile.html) — v2rayNG (Android) / Hiddify (iOS)
+- [Телефон](docs/mobile.html) — Hiddify (Android / iOS)
 - [Только браузер](docs/browser.html) — v2rayN/V2RayXS + ZeroOmega
 - [Полный VPN](docs/fullvpn.html) — v2rayN/V2RayXS в TUN-режиме
 

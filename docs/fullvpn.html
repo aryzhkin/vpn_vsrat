@@ -85,10 +85,11 @@
         <div class="step">
           <span class="step-num">1</span>
           <div class="step-body">
-            <strong>Импортируй ключ</strong>
+            <strong>Импортируй ключи</strong>
             <p>Скопируй ссылку <strong>vless://...</strong>, которую прислал тебе я.<br>
             В v2rayN нажми <strong>+</strong> вверху слева → <strong>Import bulk URL from clipboard</strong>.<br>
-            Сервер появится в таблице (Type: VLESS, Port: 443).</p>
+            Потом скопируй <strong>hy2://...</strong> и добавь тем же способом.<br>
+            В таблице появятся два сервера — VLESS (порт 443) и Hysteria2 (порт 8443).</p>
           </div>
         </div>
         <div class="step">
@@ -113,7 +114,7 @@
           <span class="step-num">4</span>
           <div class="step-body">
             <strong>Подключись</strong>
-            <p>Кликни на сервер в таблице и нажми <strong>Enter</strong>.<br>
+            <p>Кликни на один из серверов в таблице и нажми <strong>Enter</strong>.<br>
             Внизу справа появится задержка (например, <em>The delay: 121 ms</em>) — значит всё работает.</p>
           </div>
         </div>
@@ -123,15 +124,16 @@
         <div class="step">
           <span class="step-num">1</span>
           <div class="step-body">
-            <strong>Скопируй ключ</strong>
-            <p>Скопируй ссылку <strong>vless://...</strong>, которую прислал тебе я</p>
+            <strong>Скопируй ключи</strong>
+            <p>Скопируй обе ссылки — <strong>vless://...</strong> и <strong>hy2://...</strong>, которые прислал тебе я</p>
           </div>
         </div>
         <div class="step">
           <span class="step-num">2</span>
           <div class="step-body">
             <strong>Импортируй</strong>
-            <p>Нажми на иконку V2RayXS в меню → <strong>Import from pasteboard</strong></p>
+            <p>Скопируй <strong>vless://...</strong>, нажми на иконку V2RayXS в меню → <strong>Import from pasteboard</strong>.<br>
+            Потом скопируй <strong>hy2://...</strong> и импортируй тем же способом.</p>
           </div>
         </div>
         <div class="step">
@@ -149,9 +151,13 @@
     </div>
 
     <div class="card">
-      <h2>Не работает? Попробуй запасной протокол</h2>
-      <p>Если основной ключ <strong>vless://</strong> не подключается — напиши мне, пришлю запасной ключ <strong>hy2://</strong> (Hysteria2). Он работает по-другому (UDP вместо TCP) и обходит блокировки, которые ловят основной протокол.</p>
-      <p style="margin-top: 0.6rem;">Импортируется точно так же — скопируй ссылку <strong>hy2://...</strong> и вставь в v2rayN / V2RayXS тем же способом.</p>
+      <h2>Не работает?</h2>
+      <p>Если один сервер не подключается — попробуй другой. У тебя два ключа на разных протоколах:</p>
+      <ul style="margin: 0.5rem 0 0 1.3rem;">
+        <li><strong>VLESS</strong> (vless://) — TCP, маскируется под HTTPS. Стабильнее в обычных условиях.</li>
+        <li><strong>Hysteria2</strong> (hy2://) — UDP, быстрее обходит блокировки, если TCP режут.</li>
+      </ul>
+      <p style="margin-top: 0.6rem;">Просто выбери другой сервер в таблице и нажми Enter. Если оба не работают — напиши мне.</p>
     </div>
 
     <div class="card">
@@ -160,7 +166,7 @@
     </div>
 
   </main>
-  <footer>Работает через <a href="https://github.com/XTLS/Xray-core" style="color:#aaa;">XRay</a> — протокол VLESS с маскировкой под обычный HTTPS</footer>
+  <footer>Работает через <a href="https://github.com/XTLS/Xray-core" style="color:#aaa;">XRay</a> (VLESS) и <a href="https://github.com/apernet/hysteria" style="color:#aaa;">Hysteria2</a> (UDP)</footer>
   <script>
     function switchOS(name) {
       document.querySelectorAll('.os-section').forEach(el => el.classList.remove('active'));

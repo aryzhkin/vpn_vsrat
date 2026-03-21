@@ -49,9 +49,9 @@
       </div>
 
       <div id="os-android" class="os-section active">
-        <p>Скачай <strong>v2rayNG</strong> — это бесплатное приложение для VPN-подключения:</p>
-        <a class="btn" href="https://play.google.com/store/apps/details?id=com.v2ray.ang" target="_blank">Google Play</a>
-        <p style="margin-top: 0.7rem; font-size: 0.85rem; color: #888;">Нет Google Play? <a href="https://github.com/2dust/v2rayNG/releases/latest" target="_blank">Скачать APK с GitHub</a></p>
+        <p>Скачай <strong>Hiddify</strong> — бесплатное приложение для VPN (поддерживает оба протокола: VLESS и Hysteria2):</p>
+        <a class="btn" href="https://play.google.com/store/apps/details?id=app.hiddify.com" target="_blank">Google Play</a>
+        <p style="margin-top: 0.7rem; font-size: 0.85rem; color: #888;">Нет Google Play? <a href="https://github.com/hiddify/hiddify-app/releases/latest" target="_blank">Скачать APK с GitHub</a></p>
       </div>
 
       <div id="os-ios" class="os-section">
@@ -61,8 +61,13 @@
     </div>
 
     <div class="card">
-      <h2>Шаг 2. Получи ключ</h2>
-      <p>Напиши мне — пришлю личный ключ. Он выглядит как длинная ссылка, начинающаяся с <strong>vless://</strong></p>
+      <h2>Шаг 2. Получи ключи</h2>
+      <p>Напиши мне — пришлю <strong>два ключа</strong>:</p>
+      <ul style="margin: 0.5rem 0 0 1.3rem;">
+        <li><strong>vless://...</strong> — основной протокол (TCP, маскируется под обычный HTTPS)</li>
+        <li><strong>hy2://...</strong> — запасной протокол Hysteria2 (UDP, другой способ обхода блокировок)</li>
+      </ul>
+      <p style="margin-top: 0.6rem;">Это два разных протокола на разный случай. Импортируй оба — если один перестанет работать, переключись на другой.</p>
       <p style="margin-top: 0.5rem; font-size: 0.9rem; color: #888;">У каждого свой ключ — не передавай его другим.</p>
     </div>
 
@@ -78,22 +83,22 @@
         <div class="step">
           <span class="step-num">1</span>
           <div class="step-body">
-            <strong>Открой v2rayNG</strong>
-            <p>Нажми <strong>+</strong> вверху справа → <strong>Import config from Clipboard</strong> (Импорт из буфера обмена)</p>
+            <strong>Открой Hiddify</strong>
+            <p>На главном экране нажми <strong>+</strong> (новый профиль) → <strong>Add from clipboard</strong></p>
           </div>
         </div>
         <div class="step">
           <span class="step-num">2</span>
           <div class="step-body">
-            <strong>Вставь ключ</strong>
-            <p>Скопируй ссылку vless://... — приложение подхватит её автоматически</p>
+            <strong>Импортируй оба ключа</strong>
+            <p>Скопируй ссылку <strong>vless://...</strong> и добавь. Потом скопируй <strong>hy2://...</strong> и добавь тем же способом. В списке появятся два сервера.</p>
           </div>
         </div>
         <div class="step">
           <span class="step-num">3</span>
           <div class="step-body">
             <strong>Подключись</strong>
-            <p>Нажми большую кнопку <strong>V</strong> внизу экрана. При первом запуске разреши создание VPN-подключения.</p>
+            <p>Выбери один из серверов и нажми большую кнопку подключения. При первом запуске разреши добавить VPN-конфигурацию.</p>
           </div>
         </div>
       </div>
@@ -109,15 +114,15 @@
         <div class="step">
           <span class="step-num">2</span>
           <div class="step-body">
-            <strong>Вставь ключ</strong>
-            <p>Скопируй ссылку vless://... — сервер появится в списке</p>
+            <strong>Импортируй оба ключа</strong>
+            <p>Скопируй ссылку <strong>vless://...</strong> и добавь. Потом скопируй <strong>hy2://...</strong> и добавь тем же способом. В списке появятся два сервера.</p>
           </div>
         </div>
         <div class="step">
           <span class="step-num">3</span>
           <div class="step-body">
             <strong>Подключись</strong>
-            <p>Нажми большую кнопку подключения в центре экрана. При первом запуске разреши добавить VPN-конфигурацию.</p>
+            <p>Выбери один из серверов и нажми большую кнопку подключения. При первом запуске разреши добавить VPN-конфигурацию.</p>
           </div>
         </div>
       </div>
@@ -128,9 +133,13 @@
     </div>
 
     <div class="card">
-      <h2>Не работает? Попробуй запасной протокол</h2>
-      <p>Если основной ключ <strong>vless://</strong> не подключается — напиши мне, пришлю запасной ключ <strong>hy2://</strong> (Hysteria2). Он работает по-другому (UDP вместо TCP) и обходит блокировки, которые ловят основной протокол.</p>
-      <p style="margin-top: 0.6rem;">Импортируется точно так же — скопируй ссылку <strong>hy2://...</strong> и вставь в v2rayNG / Hiddify тем же способом (из буфера обмена).</p>
+      <h2>Не работает?</h2>
+      <p>Если один сервер не подключается — попробуй другой. У тебя два ключа на разных протоколах:</p>
+      <ul style="margin: 0.5rem 0 0 1.3rem;">
+        <li><strong>vless://</strong> — TCP, маскируется под HTTPS. Стабильнее в обычных условиях.</li>
+        <li><strong>hy2://</strong> — UDP, быстрее обходит блокировки, если TCP режут.</li>
+      </ul>
+      <p style="margin-top: 0.6rem;">Если оба не работают — напиши мне.</p>
     </div>
 
     <div class="card">
@@ -140,7 +149,7 @@
     </div>
 
   </main>
-  <footer>Работает через <a href="https://github.com/XTLS/Xray-core" style="color:#aaa;">XRay</a> — протокол VLESS с маскировкой под обычный HTTPS</footer>
+  <footer>Работает через <a href="https://github.com/XTLS/Xray-core" style="color:#aaa;">XRay</a> (VLESS) и <a href="https://github.com/apernet/hysteria" style="color:#aaa;">Hysteria2</a> (UDP)</footer>
   <script>
     function switchOS(name) {
       document.querySelectorAll('.os-section').forEach(el => el.classList.remove('active'));
