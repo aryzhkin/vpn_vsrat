@@ -44,7 +44,7 @@
     <div class="card">
       <div class="note">
         Используешь Zapret или Booster? Перед включением VPN — выключи их, иначе могут быть глюки с интернетом.<br>
-        Играешь в онлайн-игры? Выключай VPN на время игры — пинг будет выше через сервер в Амстердаме, а трафик от игры будет расходовать лимит VPN-сервера впустую.
+        Играешь в онлайн-игры? Выключай VPN на время игры — пинг будет выше через сервер в Нидерландах.
       </div>
       <p style="margin-top: 0.9rem;">Для чтения новостей, YouTube и заблокированных сайтов — работает отлично.<br>
       Discord тоже работает через VPN — удобно если Zapret / Booster тупит, а надо просто поговорить или посмотреть стрим.</p>
@@ -63,6 +63,7 @@
         <p>Скачай <strong>v2rayN</strong> — бесплатная программа для VPN:</p>
         <a class="btn" href="https://github.com/2dust/v2rayN/releases/latest" target="_blank">Скачать v2rayN (GitHub)</a>
         <p style="margin-top: 0.7rem; font-size: 0.85rem; color: #888;">Скачай файл <strong>v2rayN-windows-64.zip</strong>, распакуй в любую папку и запусти <strong>v2rayN.exe</strong></p>
+        <p style="margin-top: 0.5rem; font-size: 0.85rem; color: #888;">Windows может показать синее окно SmartScreen — нажми <strong>Подробнее</strong> (или сразу будет кнопка) → <strong>Выполнить в любом случае</strong>. Это нормально для программ без подписи Microsoft.</p>
       </div>
 
       <div id="os-mac" class="os-section">
@@ -84,30 +85,36 @@
         <div class="step">
           <span class="step-num">1</span>
           <div class="step-body">
-            <strong>Скопируй ключ</strong>
-            <p>Скопируй ссылку <strong>vless://...</strong>, которую прислал тебе я</p>
+            <strong>Импортируй ключ</strong>
+            <p>Скопируй ссылку <strong>vless://...</strong>, которую прислал тебе я.<br>
+            В v2rayN нажми <strong>+</strong> вверху слева → <strong>Import bulk URL from clipboard</strong>.<br>
+            Сервер появится в таблице (Type: VLESS, Port: 443).</p>
           </div>
         </div>
         <div class="step">
           <span class="step-num">2</span>
           <div class="step-body">
-            <strong>Импортируй в v2rayN</strong>
-            <p>В v2rayN нажми <strong>Servers → Import bulk URL from clipboard</strong></p>
+            <strong>Включи TUN-режим</strong>
+            <p>Внизу окна найди переключатель <strong>Enable Tun</strong> — включи его (станет синим).<br>
+            <span style="color:#888; font-size:0.85rem;">Программа попросит запуститься от имени администратора — разреши. TUN создаёт сетевой адаптер, через который пойдёт весь трафик.</span></p>
           </div>
         </div>
         <div class="step">
           <span class="step-num">3</span>
           <div class="step-body">
-            <strong>Включи TUN-режим</strong>
-            <p>Внизу окна переключи режим на <strong>TUN Mode</strong> — весь трафик пойдёт через VPN.<br>
-            <span style="color:#888; font-size:0.85rem;">Программа может попросить запуститься от имени администратора — это нормально, TUN требует права для создания сетевого адаптера.</span></p>
+            <strong>Проверь настройки внизу окна</strong>
+            <ul style="margin: 0.2rem 0 0 1rem; font-size: 0.9rem; color: #555;">
+              <li><strong>Routing</strong> — выбери <strong>V4-Global</strong> (весь трафик через VPN)</li>
+              <li>Остальные выпадашки не важны при включённом TUN — можно не трогать</li>
+            </ul>
           </div>
         </div>
         <div class="step">
           <span class="step-num">4</span>
           <div class="step-body">
             <strong>Подключись</strong>
-            <p>Выбери сервер в списке и нажми <strong>Enter</strong> или кнопку подключения</p>
+            <p>Кликни на сервер в таблице и нажми <strong>Enter</strong>.<br>
+            Внизу справа появится задержка (например, <em>The delay: 121 ms</em>) — значит всё работает.</p>
           </div>
         </div>
       </div>
@@ -143,12 +150,13 @@
 
     <div class="card">
       <h2>Не работает? Попробуй запасной протокол</h2>
-      <p>Если основной ключ не подключается — напиши мне, пришлю запасной ключ <strong>hy2://</strong> (Hysteria2).</p>
+      <p>Если основной ключ <strong>vless://</strong> не подключается — напиши мне, пришлю запасной ключ <strong>hy2://</strong> (Hysteria2). Он работает по-другому (UDP вместо TCP) и обходит блокировки, которые ловят основной протокол.</p>
+      <p style="margin-top: 0.6rem;">Импортируется точно так же — скопируй ссылку <strong>hy2://...</strong> и вставь в v2rayN / V2RayXS тем же способом.</p>
     </div>
 
     <div class="card">
       <h2>Как проверить что всё работает?</h2>
-      <p>Загугли <strong>«какой у меня IP»</strong> — должен показать <strong>209.38.42.79</strong> (наш сервер в Амстердаме), а не твой домашний адрес.</p>
+      <p>Загугли <strong>«какой у меня IP»</strong> — должен показать <strong>194.154.26.53</strong> (наш сервер в Нидерландах), а не твой домашний адрес.</p>
     </div>
 
   </main>

@@ -1,23 +1,22 @@
 # VPN для своих
 
-VPN-сервер на DigitalOcean для доступа к независимым СМИ и YouTube.
+VPN-сервер для доступа к независимым СМИ и YouTube.
 
 ## Конфигурация сервера
 
-- **Провайдер:** DigitalOcean ($6/mo — 1 GB RAM, 1 CPU, 1 TB transfer)
-- **Регион:** Amsterdam (209.38.42.79)
+- **Провайдер:** Fornex (Netherlands, Cloud NVMe 1)
+- **Регион:** Netherlands (194.154.26.53)
 - **Протоколы:**
-  - **VLESS + Reality** — порт 443 TCP, основной (маскируется под HTTPS к google.com)
+  - **VLESS + Reality** — порт 443 TCP, основной (маскируется под HTTPS к dl.google.com)
   - **Hysteria2** — порт 8443 UDP, запасной (если VLESS заблокируют)
-  - Outline/Shadowsocks — порт 20454, устарел (блокируется DPI)
-- **Управление:** 3X-UI панель — `https://209.38.42.79:2053/secretpanel/` (креды в credentials.txt)
+- **Управление:** 3X-UI панель (порт 2053, закрыт ufw, доступ только через SSH-туннель, креды в credentials.txt)
 
 ## Инструкции для пользователей
 
 Размещены на GitHub Pages: [docs/](docs/)
 
 - [Главная](docs/index.html) — выбор варианта
-- [Телефон](docs/mobile.html) — v2rayNG (Android) / Streisand (iOS)
+- [Телефон](docs/mobile.html) — v2rayNG (Android) / Hiddify (iOS)
 - [Только браузер](docs/browser.html) — v2rayN/V2RayXS + ZeroOmega
 - [Полный VPN](docs/fullvpn.html) — v2rayN/V2RayXS в TUN-режиме
 
@@ -25,7 +24,15 @@ VPN-сервер на DigitalOcean для доступа к независимы
 
 ### 1. Открой панель 3X-UI
 
-Зайди на `https://209.38.42.79:2053/secretpanel/` (логин/пароль в credentials.txt).
+Панель заблокирована снаружи — доступ только через SSH-туннель:
+
+```bash
+ssh -L 2053:127.0.0.1:2053 root@194.154.26.53
+```
+
+Не закрывай терминал. Открой в браузере: `https://127.0.0.1:2053/secretpanel/`
+
+Логин/пароль — в credentials.txt.
 
 ### 2. Добавь клиента в VLESS-Reality
 
@@ -45,31 +52,16 @@ VPN-сервер на DigitalOcean для доступа к независимы
 
 ### 4. (Опционально) Добавь Hysteria2 ключ
 
-Hysteria2 работает как запасной протокол. Если нужен отдельный ключ для друга:
+Hysteria2 работает как запасной протокол (UDP, другой вектор блокировки).
 
-1. SSH на сервер: `ssh root@209.38.42.79`
-2. Открой конфиг: `nano /etc/hysteria/config.yaml`
-3. Замени секцию `auth` на список паролей:
-   ```yaml
-   auth:
-     type: password
-     password: основной_пароль
+Hysteria2 использует единый пароль для всех (не per-user как VLESS).
 
-   # Для нескольких пользователей:
-   # auth:
-   #   type: userpass
-   #   userpass:
-   #     valera: его_пароль
-   #     masha: её_пароль
-   ```
-4. `systemctl restart hysteria-server`
-5. Ссылка для друга: `hy2://пароль@209.38.42.79:8443?insecure=1&sni=209.38.42.79#VPN-Hysteria2`
+1. Ссылка для друга: `hy2://f833ef50df3e7a0052e046e4678caa8f@194.154.26.53:8443?insecure=1&sni=bing.com#VPN-Hysteria2`
+2. Если нужно сменить пароль: `ssh root@194.154.26.53`, отредактируй `/etc/hysteria/config.yaml` (поле `password`), затем `systemctl restart hysteria-server`
 
 ## Мониторинг трафика
 
-- Скрипт `scripts/check_traffic.py` запускается ежедневно по крону на дроплете
-- Шлёт email-алерт при приближении к лимиту 1 TB/месяц
-- DigitalOcean Dashboard → Droplet → **Graphs** — текущее потребление
+- TODO: настроить мониторинг на новом сервере
 
 ## Совместимость с Zapret / Booster
 

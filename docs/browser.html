@@ -68,6 +68,7 @@
             <strong>Скачай v2rayN</strong>
             <p><a href="https://github.com/2dust/v2rayN/releases/latest" target="_blank">Открыть страницу загрузки →</a><br>
             Скачай файл <strong>v2rayN-windows-64.zip</strong>, распакуй в любую папку и запусти <strong>v2rayN.exe</strong></p>
+            <p style="margin-top: 0.5rem; font-size: 0.85rem; color: #888;">Windows может показать синее окно SmartScreen — нажми <strong>Подробнее</strong> (или сразу будет кнопка) → <strong>Выполнить в любом случае</strong>. Это нормально для программ без подписи Microsoft.</p>
           </div>
         </div>
         <div class="step">
@@ -75,22 +76,29 @@
           <div class="step-body">
             <strong>Импортируй ключ</strong>
             <p>Скопируй ссылку <strong>vless://...</strong> которую прислал тебе я.<br>
-            В v2rayN нажми <strong>Servers → Import bulk URL from clipboard</strong></p>
+            В v2rayN нажми <strong>+</strong> вверху слева → <strong>Import bulk URL from clipboard</strong>.<br>
+            Сервер появится в таблице (Type: VLESS, Port: 443).</p>
           </div>
         </div>
         <div class="step">
           <span class="step-num">3</span>
           <div class="step-body">
-            <strong>Выбери режим прокси</strong>
-            <p>Внизу окна v2rayN переключи режим на <strong>Nothing</strong> — это важно, чтобы VPN работал только в браузере, а не на всём компьютере.</p>
+            <strong>Проверь настройки внизу окна</strong>
+            <p>Внизу v2rayN есть панель с выпадашками — проверь что стоит:</p>
+            <ul style="margin: 0.4rem 0 0 1rem; font-size: 0.9rem; color: #555;">
+              <li><strong>Enable Tun</strong> — должен быть <strong>ВЫКЛЮЧЕН</strong> (серый). Мы хотим прокси только для браузера, а не VPN на весь компьютер</li>
+              <li><strong>System proxy</strong> — выбери <strong>Clear system proxy</strong></li>
+              <li><strong>Routing</strong> — выбери <strong>V4-Global</strong> (весь трафик браузера через VPN)</li>
+            </ul>
           </div>
         </div>
         <div class="step">
           <span class="step-num">4</span>
           <div class="step-body">
             <strong>Подключись</strong>
-            <p>Выбери сервер в списке и нажми <strong>Enter</strong>. Внизу окна появится статус подключения.<br>
-            <span style="color:#888; font-size:0.85rem;">v2rayN создаст локальный прокси на порту 10808 — его мы укажем в расширении браузера.</span></p>
+            <p>Кликни на сервер в таблице и нажми <strong>Enter</strong>.<br>
+            Внизу справа появится задержка (например, <em>The delay: 121 ms</em>) — значит подключение работает.</p>
+            <p style="margin-top: 0.3rem; font-size: 0.85rem; color: #888;">Слева внизу видно <strong>Local:[mixed:10808]</strong> — это порт прокси. Его мы укажем в расширении браузера на следующем шаге.</p>
           </div>
         </div>
       </div>
@@ -330,8 +338,14 @@
     </div>
 
     <div class="card">
+      <h2>Не работает? Попробуй запасной протокол</h2>
+      <p>Если основной ключ <strong>vless://</strong> не подключается — напиши мне, пришлю запасной ключ <strong>hy2://</strong> (Hysteria2). Он работает по-другому (UDP вместо TCP) и обходит блокировки, которые ловят основной протокол.</p>
+      <p style="margin-top: 0.6rem;">Импортируется точно так же — скопируй ссылку <strong>hy2://...</strong> и вставь в v2rayN / V2RayXS тем же способом. Настройки ZeroOmega менять не нужно — порт прокси останется тот же.</p>
+    </div>
+
+    <div class="card">
       <h2>Готово. Как проверить что работает?</h2>
-      <p>Открой в браузере поиск и введи <strong>«какой у меня IP»</strong> — должен показать <strong>209.38.42.79</strong>, а не твой домашний адрес.</p>
+      <p>Открой в браузере поиск и введи <strong>«какой у меня IP»</strong> — должен показать <strong>194.154.26.53</strong>, а не твой домашний адрес.</p>
     </div>
 
   </main>
