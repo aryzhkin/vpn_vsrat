@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VPN через AmneziaVPN</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #f5f5f5; color: #222; }
+    header { background: #1a1a2e; color: white; padding: 1.5rem 2rem; }
+    header a { color: #aaa; text-decoration: none; font-size: 0.9rem; }
+    header h1 { font-size: 1.4rem; font-weight: 600; margin-top: 0.4rem; }
+    header p { color: #aaa; font-size: 0.9rem; margin-top: 0.3rem; }
+    main { max-width: 680px; margin: 2rem auto; padding: 0 1rem; }
+    .card { background: white; border-radius: 14px; padding: 1.5rem; margin-bottom: 1.2rem; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+    .card h2 { font-size: 1rem; font-weight: 700; margin-bottom: 0.9rem; color: #1a1a2e; }
+    .card p, .card li { font-size: 0.95rem; line-height: 1.65; color: #444; }
+    .green-box { background: #e8f5e9; border-left: 3px solid #43a047; padding: 0.8rem 1rem; border-radius: 0 8px 8px 0; font-size: 0.9rem; color: #2e4a30; margin-bottom: 1rem; }
+    .note { background: #fff8e1; border-left: 3px solid #f5a623; padding: 0.75rem 1rem; border-radius: 0 8px 8px 0; font-size: 0.9rem; color: #555; margin-top: 0.9rem; }
+    .btn { display: inline-block; margin-top: 0.5rem; margin-right: 0.5rem; margin-bottom: 0.3rem; padding: 0.6rem 1.2rem; background: #2255cc; color: white; text-decoration: none; border-radius: 8px; font-size: 0.9rem; }
+    .btn.alt { background: #555; }
+    .step-num { display: inline-flex; align-items: center; justify-content: center; background: #2255cc; color: white; border-radius: 50%; width: 1.6rem; height: 1.6rem; font-size: 0.8rem; font-weight: 700; margin-right: 0.5rem; flex-shrink: 0; }
+    .step { display: flex; align-items: flex-start; margin-bottom: 0.9rem; }
+    .step-body { flex: 1; padding-top: 0.1rem; }
+    .step-body strong { display: block; font-size: 0.95rem; margin-bottom: 0.2rem; }
+    .step-body p { font-size: 0.9rem; color: #555; margin: 0; }
+    footer { text-align: center; padding: 2rem; color: #aaa; font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html">&larr; Назад</a>
+    <h1>VPN через AmneziaVPN</h1>
+    <p>Самый простой способ &mdash; 2 шага на любом устройстве</p>
+  </header>
+  <main>
+
+    <div class="card">
+      <div class="green-box">
+        Работает на телефоне и компьютере. Весь трафик идёт через VPN &mdash; YouTube, Instagram, Discord, всё.
+      </div>
+      <p>AmneziaVPN &mdash; бесплатное приложение с открытым кодом. Использует протокол <strong>AmneziaWG</strong> &mdash; модифицированный WireGuard, который обходит блокировки в России.</p>
+    </div>
+
+    <div class="card">
+      <h2>Шаг 1. Установи AmneziaVPN</h2>
+
+      <div class="step">
+        <span class="step-num">1</span>
+        <div class="step-body">
+          <strong>Скачай приложение для своей платформы</strong>
+          <p>
+            <a class="btn" href="https://amnezia.org/ru/downloads" target="_blank">Скачать с официального сайта</a>
+          </p>
+          <p style="margin-top: 0.5rem;">Там есть версии для Windows, macOS, iPhone, Android и Linux.</p>
+          <p style="margin-top: 0.5rem;">
+            <a class="btn" href="https://apps.apple.com/app/amneziavpn/id1600529900" target="_blank">iPhone (App Store)</a>
+            <a class="btn" href="https://play.google.com/store/apps/details?id=org.amnezia.vpn" target="_blank">Android (Google Play)</a>
+          </p>
+          <p style="margin-top: 0.8rem;">
+            <a class="btn alt" href="downloads/" target="_blank">Запасная ссылка (Windows / macOS / APK)</a>
+          </p>
+          <p style="margin-top: 0.3rem; font-size: 0.85rem; color: #888;">Это копии на случай если сайт amnezia.org не открывается. Актуальные версии всегда на <a href="https://amnezia.org/ru/downloads" target="_blank" style="color:#888;">amnezia.org</a>.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Шаг 2. Импортируй конфиг</h2>
+
+      <div class="step">
+        <span class="step-num">2</span>
+        <div class="step-body">
+          <strong>Скопируй ключ и вставь в приложение</strong>
+          <p>Я пришлю тебе строку вида <strong>vpn://...</strong></p>
+          <p style="margin-top: 0.4rem;">Скопируй её целиком, открой AmneziaVPN и нажми кнопку с <strong>+</strong> или <strong>Добавить подключение</strong>. Приложение само распознает конфиг из буфера обмена.</p>
+          <p style="margin-top: 0.4rem;">Если не распознало &mdash; нажми <strong>Добавить через файл или текст</strong> и вставь строку вручную.</p>
+        </div>
+      </div>
+
+      <div class="note">На iPhone также можно открыть <strong>.conf</strong> файл через &laquo;Поделиться&raquo; &rarr; AmneziaVPN.</div>
+    </div>
+
+    <div class="card">
+      <h2>Готово. Как проверить?</h2>
+      <p>Нажми <strong>Подключиться</strong> в приложении. Затем открой браузер и загугли <strong>&laquo;какой у меня IP&raquo;</strong> &mdash; должен показать <strong>194.154.26.53</strong>, а не твой домашний адрес.</p>
+    </div>
+
+    <div class="card">
+      <h2>Не работает?</h2>
+      <p>Если AmneziaWG не подключается &mdash; напиши мне, дам ключи для другого протокола (VLESS / Hysteria2).</p>
+      <p style="margin-top: 0.5rem; font-size: 0.85rem; color: #888;">AmneziaWG работает через UDP. Если твой провайдер блокирует UDP целиком (бывает на Tele2), поможет VLESS &mdash; он работает через TCP/443 и маскируется под обычный HTTPS.</p>
+    </div>
+
+  </main>
+  <footer>Работает через <a href="https://github.com/amnezia-vpn/amnezia-client" style="color:#aaa;">AmneziaVPN</a> &mdash; протокол AmneziaWG (обфусцированный WireGuard)</footer>
+</body>
+</html>
