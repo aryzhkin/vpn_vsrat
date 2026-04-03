@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VPN через Clash Verge Rev</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #f5f5f5; color: #222; }
+    header { background: #1a1a2e; color: white; padding: 1.5rem 2rem; }
+    header a { color: #aaa; text-decoration: none; font-size: 0.9rem; }
+    header h1 { font-size: 1.4rem; font-weight: 600; margin-top: 0.4rem; }
+    header p { color: #aaa; font-size: 0.9rem; margin-top: 0.3rem; }
+    main { max-width: 680px; margin: 2rem auto; padding: 0 1rem; }
+    .card { background: white; border-radius: 14px; padding: 1.5rem; margin-bottom: 1.2rem; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+    .card h2 { font-size: 1rem; font-weight: 700; margin-bottom: 0.9rem; color: #1a1a2e; }
+    .card p, .card li { font-size: 0.95rem; line-height: 1.65; color: #444; }
+    .green-box { background: #e8f5e9; border-left: 3px solid #43a047; padding: 0.8rem 1rem; border-radius: 0 8px 8px 0; font-size: 0.9rem; color: #2e4a30; margin-bottom: 1rem; }
+    .note { background: #fff8e1; border-left: 3px solid #f5a623; padding: 0.75rem 1rem; border-radius: 0 8px 8px 0; font-size: 0.9rem; color: #555; margin-top: 0.9rem; }
+    .btn { display: inline-block; margin-top: 0.5rem; margin-right: 0.5rem; margin-bottom: 0.3rem; padding: 0.6rem 1.2rem; background: #2255cc; color: white; text-decoration: none; border-radius: 8px; font-size: 0.9rem; }
+    .step-num { display: inline-flex; align-items: center; justify-content: center; background: #2255cc; color: white; border-radius: 50%; width: 1.6rem; height: 1.6rem; font-size: 0.8rem; font-weight: 700; margin-right: 0.5rem; flex-shrink: 0; }
+    .step { display: flex; align-items: flex-start; margin-bottom: 0.9rem; }
+    .step-body { flex: 1; padding-top: 0.1rem; }
+    .step-body strong { display: block; font-size: 0.95rem; margin-bottom: 0.2rem; }
+    .step-body p { font-size: 0.9rem; color: #555; margin: 0; }
+    footer { text-align: center; padding: 2rem; color: #aaa; font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html">&larr; Назад</a>
+    <h1>VPN через Clash Verge Rev</h1>
+    <p>Умный VPN на компьютере &mdash; выбираешь что идёт через VPN, а что напрямую</p>
+  </header>
+  <main>
+
+    <div class="card">
+      <div class="green-box">
+        Через VPN пойдут только заблокированные сервисы (Telegram, Discord, YouTube, Instagram и т.д.).<br>
+        Всё остальное (игры, банки, обновления) &mdash; напрямую, без потери скорости и пинга.
+      </div>
+      <p><strong>Clash Verge Rev</strong> &mdash; бесплатное приложение с открытым кодом. Работает на Windows, macOS и Linux. Использует протокол <strong>VLESS Reality</strong> &mdash; маскируется под обычный HTTPS-трафик, блокировки в России не видят.</p>
+    </div>
+
+    <div class="card">
+      <h2>Шаг 1. Скачай Clash Verge Rev</h2>
+
+      <div class="step">
+        <span class="step-num">1</span>
+        <div class="step-body">
+          <strong>Скачай установщик для своей системы</strong>
+          <p>
+            <a class="btn" href="https://github.com/clash-verge-rev/clash-verge-rev/releases/latest" target="_blank">Скачать с GitHub</a>
+          </p>
+          <p style="margin-top: 0.5rem;">
+            <strong>Windows:</strong> скачай файл <strong>Clash.Verge_x64-setup.exe</strong> и установи.<br>
+            <strong>macOS:</strong> скачай <strong>.dmg</strong> файл (arm64 для Mac 2020+, x64 для старых).
+          </p>
+          <p style="margin-top: 0.5rem; font-size: 0.85rem; color: #888;">Windows может показать синее окно SmartScreen &mdash; нажми <strong>Подробнее</strong> &rarr; <strong>Выполнить в любом случае</strong>.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Шаг 2. Установи службу (Service Mode)</h2>
+
+      <div class="step">
+        <span class="step-num">2</span>
+        <div class="step-body">
+          <strong>Это нужно для перехвата трафика приложений</strong>
+          <p>Открой Clash Verge &rarr; <strong>Настройки</strong> (слева) &rarr; найди <strong>Служба (Service Mode)</strong> &rarr; нажми <strong>Установить</strong>.<br>
+          Подтверди права администратора (UAC). Это одноразовая настройка.</p>
+        </div>
+      </div>
+
+      <div class="note">Без службы можно использовать <strong>Системный прокси</strong> &mdash; будет работать для браузера, Telegram и Discord. Но TUN-режим (полный перехват трафика) требует службу.</div>
+    </div>
+
+    <div class="card">
+      <h2>Шаг 3. Импортируй конфиг</h2>
+
+      <div class="step">
+        <span class="step-num">3</span>
+        <div class="step-body">
+          <strong>Я пришлю тебе файл (.yaml)</strong>
+          <p>Открой Clash Verge &rarr; <strong>Профили</strong> (слева) &rarr; <strong>Создать</strong> &rarr; <strong>Local</strong>.<br>
+          Вставь содержимое файла, который я тебе прислал, и нажми <strong>Сохранить</strong>.<br>
+          Нажми на созданный профиль, чтобы он стал активным (подсветится синим).</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Шаг 4. Включи VPN</h2>
+
+      <div class="step">
+        <span class="step-num">4</span>
+        <div class="step-body">
+          <strong>Выбери режим работы</strong>
+          <p>На главной странице:</p>
+          <ul style="margin: 0.4rem 0 0 1rem; font-size: 0.9rem; color: #555;">
+            <li>Режим работы: <strong>Rule</strong> (автоматически выбирает что через VPN, а что напрямую)</li>
+            <li>Включи <strong>Системный прокси</strong> или <strong>Режим TUN</strong> (если установлена служба)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="note">
+        <strong>Системный прокси</strong> &mdash; проще, работает для большинства приложений.<br>
+        <strong>Режим TUN</strong> &mdash; перехватывает вообще весь трафик, надёжнее, но требует службу.
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Что идёт через VPN?</h2>
+      <p>В конфиге уже настроены правила. Через VPN автоматически идут:</p>
+      <ul style="margin: 0.5rem 0 0 1.3rem;">
+        <li><strong>Telegram</strong></li>
+        <li><strong>Discord</strong></li>
+        <li><strong>YouTube</strong></li>
+        <li><strong>Instagram</strong></li>
+        <li><strong>Facebook</strong></li>
+        <li><strong>Twitter / X</strong></li>
+      </ul>
+      <p style="margin-top: 0.7rem;">Всё остальное идёт <strong>напрямую</strong> &mdash; игры, банки, Яндекс, обновления Windows и т.д.</p>
+      <p style="margin-top: 0.5rem; font-size: 0.85rem; color: #888;">Нужно добавить ещё сайт через VPN? Напиши мне, обновлю конфиг.</p>
+    </div>
+
+    <div class="card">
+      <h2>Готово. Как проверить?</h2>
+      <p>Открой браузер &rarr; загугли <strong>&laquo;какой у меня IP&raquo;</strong>. Должен показать <strong>194.154.26.53</strong> (наш сервер в Нидерландах).</p>
+      <p style="margin-top: 0.5rem;">Попробуй открыть <strong>YouTube</strong> или <strong>Instagram</strong> &mdash; должны работать. Обычные сайты (Яндекс, банки) должны открываться как раньше, без задержек.</p>
+    </div>
+
+    <div class="card">
+      <h2>Не работает?</h2>
+      <p>Проверь:</p>
+      <ul style="margin: 0.5rem 0 0 1.3rem;">
+        <li>Профиль активирован (подсвечен синим в разделе Профили)?</li>
+        <li>Включён <strong>Системный прокси</strong> или <strong>Режим TUN</strong>?</li>
+        <li>Режим работы стоит <strong>Rule</strong>?</li>
+      </ul>
+      <p style="margin-top: 0.6rem;">Если всё правильно, но не работает &mdash; напиши мне.</p>
+    </div>
+
+  </main>
+  <footer>Работает через <a href="https://github.com/clash-verge-rev/clash-verge-rev" style="color:#aaa;">Clash Verge Rev</a> &mdash; протокол <a href="https://github.com/XTLS/Xray-core" style="color:#aaa;">VLESS Reality</a></footer>
+</body>
+</html>
