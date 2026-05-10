@@ -16,9 +16,10 @@ VPN-сервер для доступа к независимым СМИ и YouTu
 Размещены на GitHub Pages: [docs/](docs/)
 
 - [Главная](docs/index.html) — выбор варианта
-- [Телефон](docs/mobile.html) — Hiddify (Android / iOS)
-- [Только браузер](docs/browser.html) — v2rayN/V2RayXS + ZeroOmega
-- [Полный VPN](docs/fullvpn.html) — v2rayN/V2RayXS в TUN-режиме
+- [Телефон](docs/mobile.html) — Happ (iOS) / Hiddify (Android), VLESS Reality + Hysteria2
+- [Clash Verge Rev](docs/clashverge.html) — рекомендуем для ПК, VLESS Reality + split tunneling
+- [AmneziaVPN](docs/amnezia.html) — альтернатива для телефона/ПК, AmneziaWG
+- [Полный VPN (запасной)](docs/fullvpn.html) — v2rayN/V2RayXS в TUN-режиме
 
 ## Как добавить нового пользователя
 
